@@ -1,0 +1,27 @@
+package FacebookStepDefinitions;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class LoginSteps {
+
+	@Given("^I have valid login credentials$")
+	public void givenStatment(){
+		System.out.println("Given statement executed successfully");
+	}
+
+	@When("^I login using my credentials$")
+	public void whenStatement(){
+		System.out.println("When statement execueted successfully");
+	}
+
+	@Then("^I am able to access facebook$")
+	public void thenStatment(){
+		System.out.println("Then statement executed successfully");
+
+	}
+}
+
+
+
