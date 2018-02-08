@@ -1,42 +1,75 @@
 package FacebookStepDefinitions;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.openqa.selenium.By;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
+import AutoTrader.AutoTraderLogin;
+import AutoTrader.VehicleDetails;
 
-public class LoginSteps {
-
+public class LoginSteps extends AutoTraderLogin {	
 	
-	public String chromeDriverLocation = "";
-	public String facebookLoginPage = "https://www.facebook.com";
-	
-	public void facebookLoginDriver() {
-		System.setProperty("webdriver.chrome.driver", chromeDriverLocation);
-		WebDriver driver = new ChromeDriver();
-		driver.get(facebookLoginPage);
+	@Given("^I have a browser open$")
+	public void I_have_a_browser_open() {
+		DriverNoPage();
 		
 	}
 	
-	@Given("^I have valid login credentials$")
-	public void I_have_valid_login_credentials(){
-		
+	@When("^I enter the AutoTrader URL$")
+	public void I_enter_the_AutoTrader_URL(){
+		driver.get(autoTraderHomePage);
 	}
 
-	@When("^I login using my credentials$")
-	public void I_login_using_my_credentials(){
+	@Then("^ I should be taken to the AutoTrader webpage$")
+	public void  I_should_be_taken_to_the_AutoTrader_webpage(){
+		driver.findElement(By.cssSelector("a[href*='/secure/signin?after-sigin-url=/']")).click();
+
+	}
+	
+	@Given("^I am on the Autotrader webpage$")
+	public void I_am_on_the_Autotrader_webpage() {
+		Driver();
 		
 	}
+	
+	@When("^I click on bikes$")
+	public void I_select_bikes(){
+		driver.findElement(By.cssSelector("a[href*='/bikes']")).click();
+	}
 
-	@Then("^I am able to access facebook$")
-	public void I_am_able_to_access_facebook(){
+	@Then("^I should be able to search for a specific bike$")
+	public void  I_should_be_able_to_search_for_a_specific_bike(){
+		driver.findElement(By.id("searchVehicles")).isDisplayed();
+		driver.findElement(By.className("header-1 is-medium")).getAttribute("value");
+	}
+	
+	@Given("^I have details of a vehicle$")
+	public void  I_have_details_of_a_vehicle(){
+		VehicleDetails test = new VehicleDetails();
+		assertFalse(test.map.isEmpty());
+	}
+
+	@When("^I select evaluate a vehicle$")
+	public void  I_select_evaluate_a_vehicle(){
+		driver.findElement(By.cssSelector("a[href*='/car-valuation']")).click();
+	}
+	@Then("^fill in the required details$")
+	public void  fill_in_the_required_details(){
+		driver.findElement(By.id("")).sendKeys("");
+		driver.findElement(By.id("")).sendKeys("");
+		driver.findElement(By.className("get-valuation-button track-submitVrmLookup tracking-motoring-products-link")).click();
+		driver.findElement(By.cssSelector("a[href*=rc-anchor-center-item rc-anchor-checkbox-holder")).click();
+		driver.findElement(By.className("button-green-large tracking-confirmVehicle tracking-standard-link")).click();
 		
-
+	}
+	@Then("^I should be asked to register$")
+	public void  I_should_be_asked_to_register(){
+		driver.findElement(By.id("js-test-text-change")).getAttribute("value");
 	}
 }
 

@@ -1,7 +1,18 @@
-Feature: Login to facebook
+Feature: Login to Autotrader
 
-Given I have valid login credentials
-And I am on the facebook homepage
-And no one else is loged in
-When I login using my credentials
-Then I am able to access facebook
+Scenario: The webpage exist
+Given I have a browser open
+And I enter the AutoTrader URL
+Then I should be taken to the AutoTrader webpage
+
+Scenario: You can navigate through the menu at the top
+Given I am on the Autotrader webpage
+When I click on bikes
+Then I should be able to search for a specific bike
+
+Scenario: You can evaluate your vehicle
+Given I have details of a vehicle
+And I am on the Autotrader webpage
+When I select evaluate a vehicle
+And fill in the required details
+Then I should be asked to register
