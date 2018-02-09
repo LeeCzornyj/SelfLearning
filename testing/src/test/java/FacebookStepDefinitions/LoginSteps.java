@@ -27,7 +27,7 @@ public class LoginSteps extends AutoTraderLogin {
 
 	@Then("^ I should be taken to the AutoTrader webpage$")
 	public void  I_should_be_taken_to_the_AutoTrader_webpage(){
-		driver.findElement(By.cssSelector("a[href*='/secure/signin?after-sigin-url=/']")).click();
+		assertTrue(driver.findElement(By.cssSelector("a[href*='/secure/signin?after-sigin-url=/']")).isDisplayed());
 
 	}
 	
@@ -44,14 +44,13 @@ public class LoginSteps extends AutoTraderLogin {
 
 	@Then("^I should be able to search for a specific bike$")
 	public void  I_should_be_able_to_search_for_a_specific_bike(){
-		driver.findElement(By.id("searchVehicles")).isDisplayed();
+		assertTrue(driver.findElement(By.id("searchVehicles")).isDisplayed());
 		driver.findElement(By.className("header-1 is-medium")).getAttribute("value");
 	}
 	
 	@Given("^I have details of a vehicle$")
 	public void  I_have_details_of_a_vehicle(){
-		VehicleDetails test = new VehicleDetails();
-		assertFalse(test.map.isEmpty());
+		assertFalse(VehicleDetails.map.isEmpty());
 	}
 
 	@When("^I select evaluate a vehicle$")
@@ -60,8 +59,9 @@ public class LoginSteps extends AutoTraderLogin {
 	}
 	@Then("^fill in the required details$")
 	public void  fill_in_the_required_details(){
-		driver.findElement(By.id("")).sendKeys("");
-		driver.findElement(By.id("")).sendKeys("");
+		
+		driver.findElement(By.id("")).sendKeys(VehicleDetails.map.get("CarReg"));
+		driver.findElement(By.id("")).sendKeys(VehicleDetails.map.get("CarMileage"));
 		driver.findElement(By.className("get-valuation-button track-submitVrmLookup tracking-motoring-products-link")).click();
 		driver.findElement(By.cssSelector("a[href*=rc-anchor-center-item rc-anchor-checkbox-holder")).click();
 		driver.findElement(By.className("button-green-large tracking-confirmVehicle tracking-standard-link")).click();
@@ -69,7 +69,7 @@ public class LoginSteps extends AutoTraderLogin {
 	}
 	@Then("^I should be asked to register$")
 	public void  I_should_be_asked_to_register(){
-		driver.findElement(By.id("js-test-text-change")).getAttribute("value");
+		assertTrue(driver.findElement(By.id("signInSubmit")).isDisplayed());
 	}
 }
 

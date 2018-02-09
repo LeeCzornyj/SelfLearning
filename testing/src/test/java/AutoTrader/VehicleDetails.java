@@ -5,7 +5,7 @@ import java.util.Map;
 public class VehicleDetails {
 
 	
-	public Map<String,String> map = new HashMap<String, String>();
+	public static HashMap<String,String> map = new HashMap<String, String>();
 	
 	public void vehicleDetails() {
 		map.put("CarReg", "ky09jyj");
@@ -13,12 +13,15 @@ public class VehicleDetails {
 		
 	}
 
+	
 	public Map<String, String> getMap() {
 		return map;
 	}
 
-	public void setMap(Map<String, String> map) {
-		this.map = map;
+
+	public static void setMap(HashMap<String, String> map) {
+		VehicleDetails.map = map;
 	}
+
 	
 }
