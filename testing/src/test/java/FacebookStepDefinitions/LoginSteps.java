@@ -60,10 +60,10 @@ public class LoginSteps extends AutoTraderLogin {
 	@Then("^fill in the required details$")
 	public void  fill_in_the_required_details(){
 		
-		driver.findElement(By.id("")).sendKeys(VehicleDetails.map.get("CarReg"));
-		driver.findElement(By.id("")).sendKeys(VehicleDetails.map.get("CarMileage"));
+		driver.findElement(By.id("vrn")).sendKeys(VehicleDetails.map.get("CarReg"));
+		driver.findElement(By.id("milage")).sendKeys(VehicleDetails.map.get("CarMileage"));
 		driver.findElement(By.className("get-valuation-button track-submitVrmLookup tracking-motoring-products-link")).click();
-		driver.findElement(By.cssSelector("a[href*=rc-anchor-center-item rc-anchor-checkbox-holder")).click();
+		driver.findElement(By.cssSelector("a[href*='rc-anchor-center-item rc-anchor-checkbox-holder']")).click();
 		driver.findElement(By.className("button-green-large tracking-confirmVehicle tracking-standard-link")).click();
 		
 	}
@@ -71,6 +71,38 @@ public class LoginSteps extends AutoTraderLogin {
 	public void  I_should_be_asked_to_register(){
 		assertTrue(driver.findElement(By.id("signInSubmit")).isDisplayed());
 	}
+	
+	@When("^I click on find a local dealer$")
+	public void  I_click_on_find_a_local_dealer(){
+		driver.findElement(By.cssSelector("a[href*='/car-dealers']")).click();
+	}
+	
+	@When("^enter my postcode$")
+	public void  enter_my_postcode(){
+		driver.findElement(By.id("postcode")).sendKeys(VehicleDetails.map.get("vehLocation"));
+		
+	}
+	
+	@When("^select see all dealers$")
+	public void  select_see_all_dealers(){
+		driver.findElement(By.id("submit")).click();
+	}
+	
+	@Then("^I will see all the dealers near my postcode$")
+	public void  I_will_see_all_the_dealers_near_my_postcode(){
+		assertTrue(driver.findElement(By.className("dealerList_title")).getText().contains(VehicleDetails.map.get("vehLocation")));
+	}
+	
+	@When("^I click on about us$")
+	public void  I_click_on_about_us(){
+		driver.findElement(By.cssSelector("a[href*='http://about-us.autotrader.co.uk']")).click();
+	}
+	
+	@Then("^I will be taken to the about us webpage$")
+	public void  I_will_be_taken_to_the_about_us_webpage(){
+		assertTrue(driver.getCurrentUrl().equals("http://about-us.autotrader.co.uk"));
+	}
+	
 }
 
 

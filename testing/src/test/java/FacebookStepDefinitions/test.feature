@@ -16,3 +16,10 @@ And I am on the Autotrader webpage
 When I select evaluate a vehicle
 And fill in the required details
 Then I should be asked to register
+
+Scenario: Find a local dealer
+Given I am on the Autotrader webpage
+When I click on find a local dealer
+And enter my postcode
+And select see all dealers
+Then I will see all the dealers near my postcode

@@ -10,6 +10,7 @@ public class VehicleDetails {
 	public void vehicleDetails() {
 		map.put("CarReg", "ky09jyj");
 		map.put("CarMileage", "34000");
+		map.put("vehLocation", "NN172UU");
 		
 	}
 
