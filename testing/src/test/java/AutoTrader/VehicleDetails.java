@@ -23,6 +23,8 @@ public class VehicleDetails {
 	public static void setMap(HashMap<String, String> map) {
 		VehicleDetails.map = map;
 	}
+	
+	
 
 	
 }
