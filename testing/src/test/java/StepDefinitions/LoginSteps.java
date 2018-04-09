@@ -26,9 +26,10 @@ public class LoginSteps extends AutoTraderLogin {
 		driver.get(autoTraderHomePage);
 	}
 
-	@Then("^ I should be taken to the AutoTrader webpage$")
+	@Then("^I should be taken to the AutoTrader webpage$")
 	public void  I_should_be_taken_to_the_AutoTrader_webpage(){
 		assertTrue(driver.findElement(By.cssSelector("a[href*='/secure/signin?after-sigin-url=/']")).isDisplayed());
+		
 
 	}
 	

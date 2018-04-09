@@ -1,11 +1,11 @@
-package AutoTrader;
+	package AutoTrader;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class AutoTraderLogin {	
 	
-	public static String chromeDriverLocation = "";
+	public static String chromeDriverLocation = "C:/Users/lee/Documents/workspace/testing/src/test/resources/testing/chromedriver.exe";
 	public String autoTraderHomePage = "https://www.autotrader.co.uk/";
 	public WebDriver driver;
 	
