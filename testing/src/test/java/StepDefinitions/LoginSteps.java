@@ -23,7 +23,7 @@ public class LoginSteps extends AutoTraderLogin {
 	
 	@When("^I enter the AutoTrader URL$")
 	public void I_enter_the_AutoTrader_URL(){
-		driver.get(autoTraderHomePage);
+		driver.get(qaHomePage);
 	}
 
 	@Then("^I should be taken to the AutoTrader webpage$")
