@@ -2,7 +2,7 @@ Feature: Login to Autotrader
 
 Scenario: The webpage exist
 Given I have a browser open
-And I enter the AutoTrader URL
+When I enter the AutoTrader URL
 Then I should be taken to the AutoTrader webpage
 
 Scenario: You can navigate through the menu at the top
